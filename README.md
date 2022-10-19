@@ -14,10 +14,22 @@ Citation:
         }
 
 
-### Requirements
-<b>TensorFlow:</b> 2.4.1-fosscuda-2020a-Python-3.8.2    <br />
-<b>Keras:</b> 2.6.0     <br />
-<b>Matplotlib:</b> 3.5.1    <br />
-<b>Pandas:</b> 1.4.1    <br />
-<b>Numpy:</b> 1.19.5    <br />
-<b>Scikit-learn:</b> 1.0.2     <br />
+### Installation
+1) Install miniconda
+        wget https://docs.conda.io/en/latest/miniconda.html
+        ./Miniconda3-latest-Linux-x86_64.sh
+2) Install mamba
+        conda install mamba -n base -c conda-forge
+3) Create an environment
+        conda create --name tf_gpu 
+4) Activate the environment
+        conda activate tf_gpu
+5) Install TensorFlow
+        mamba install tensorflow-gpu -c conda-forge
+6) Install packages using pip
+        keras==2.6.0    
+        matplotlib==3.5.1    
+        pandas==1.4.1   
+        numpy==1.19.5   
+        scikit-learn==1.0.2 
+
