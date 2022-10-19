@@ -15,21 +15,21 @@ Citation:
 
 
 ### Installation
-1) Install miniconda
-        wget https://docs.conda.io/en/latest/miniconda.html
-        ./Miniconda3-latest-Linux-x86_64.sh
-2) Install mamba
-        conda install mamba -n base -c conda-forge
-3) Create an environment
-        conda create --name tf_gpu 
-4) Activate the environment
-        conda activate tf_gpu
-5) Install TensorFlow
-        mamba install tensorflow-gpu -c conda-forge
-6) Install packages using pip
-        keras==2.6.0    
-        matplotlib==3.5.1    
-        pandas==1.4.1   
-        numpy==1.19.5   
-        scikit-learn==1.0.2 
+1) Install miniconda </br>
+        &nbsp; &nbsp; wget https://docs.conda.io/en/latest/miniconda.html </br>
+        &nbsp; &nbsp; ./Miniconda3-latest-Linux-x86_64.sh </br>
+2) Install mamba </br>
+        &nbsp; &nbsp; conda install mamba -n base -c conda-forge </br>
+3) Create an environment </br>
+        &nbsp; &nbsp; conda create --name tf_gpu  </br>
+4) Activate the environment </br>
+        &nbsp; &nbsp; conda activate tf_gpu </br>
+5) Install TensorFlow </br>
+        &nbsp; &nbsp; mamba install tensorflow-gpu -c conda-forge </br>
+6) Install packages using pip </br>
+        &nbsp; &nbsp; keras==2.6.0    </br>
+        &nbsp; &nbsp; matplotlib==3.5.1    </br>
+        &nbsp; &nbsp; pandas==1.4.1   </br>
+        &nbsp; &nbsp; numpy==1.19.5   </br>
+        &nbsp; &nbsp; scikit-learn==1.0.2 </br>
 
