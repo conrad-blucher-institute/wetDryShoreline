@@ -31,11 +31,11 @@ Citation:<br>
 5) Install TensorFlow </br>
         &nbsp; &nbsp; mamba install tensorflow-gpu -c conda-forge </br>
 6) Install packages using pip </br>
-        &nbsp; &nbsp; keras==2.6.0    </br>
-        &nbsp; &nbsp; matplotlib==3.5.1    </br>
-        &nbsp; &nbsp; pandas==1.4.1   </br>
-        &nbsp; &nbsp; numpy==1.19.5   </br>
-        &nbsp; &nbsp; scikit-learn==1.0.2 </br>
+        &nbsp; &nbsp; keras = 2.6.0    </br>
+        &nbsp; &nbsp; matplotlib = 3.5.1    </br>
+        &nbsp; &nbsp; pandas = 1.4.1   </br>
+        &nbsp; &nbsp; numpy = 1.19.5   </br>
+        &nbsp; &nbsp; scikit-learn = 1.0.2 </br>
 
 
 ### Quickstart
