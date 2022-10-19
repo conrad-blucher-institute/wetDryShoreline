@@ -30,7 +30,7 @@ Citation:<br>
         &nbsp; &nbsp; conda activate tf_gpu </br>
 5) Install TensorFlow </br>
         &nbsp; &nbsp; mamba install tensorflow-gpu -c conda-forge </br>
-6) Install packages using pip </br>
+6) Install packages using pip <i>(using the double equals command to install these versions)</i></br>
         &nbsp; &nbsp; keras = 2.6.0    </br>
         &nbsp; &nbsp; matplotlib = 3.5.1    </br>
         &nbsp; &nbsp; pandas = 1.4.1   </br>
