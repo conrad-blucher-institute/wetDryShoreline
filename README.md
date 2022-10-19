@@ -33,3 +33,7 @@ Citation:
         &nbsp; &nbsp; numpy==1.19.5   </br>
         &nbsp; &nbsp; scikit-learn==1.0.2 </br>
 
+
+### Quickstart
+To train the model, please make sure to first activate the environment. After, please type the following command to start training `python src/train.py`
+
