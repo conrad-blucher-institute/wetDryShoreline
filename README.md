@@ -41,17 +41,16 @@ To train the model, please make sure to first activate the environment. After, p
 
 ### Data Format
 The dataset is organized under the below directories. `testingOrtho1` is the name of the dataset used. In this case, `testingOrtho1` means that we are using the orthomosaic 1 as an independent testing dataset, while using all the other orthomosaic for training and validation. Depending on which orthomosaic we want as the independent testing dataset, a different dataset will be loaded.
-
-	data/
+		
+	data
 	└── testingOrtho1
 	    ├── training
-	    │   ├── original (this directory contains all the original images)
+	    │   ├── original (this directory contains all the original images) 
 	    │   └── labeled  (this directory contains all the labeled images)
 	    ├── testing
-            |   ├── original (this directory contains all the original images)
-	    │   └── labeled  (this directory contains all the labeled images)   
+	    │   ├── original (this directory contains all the original images) 
+	    │   └── labeled  (this directory contains all the labeled images)
 	    └── validation
-                ├── original (this directory contains all the original images)
+	        ├── original (this directory contains all the original images) 
 	        └── labeled  (this directory contains all the labeled images)
-	
 
