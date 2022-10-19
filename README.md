@@ -5,14 +5,18 @@ This repository contains the code used in the described paper
 ### Publication
 Publication under review
 
-Citation:
+Citation:<br>
+<i>Regular text citation</i>
 
+<details>
+  <summary>LaTeX Citation</summary>
+  
         @article{vicensmiquel,
                 title={A Deep Learning Based Method to Delineate the Wet/Dry Shoreline and Compute its Elevation Using High-Resolution UAS Imagery},
                 author={Vicens-Miquel, Marina and Medrano, Antonio and Tissot, Philippe and Kamangir, Hamid and Starek, Michael},
                 journal={Remote Sensing MDPI(Submitted, pending review)}
         }
-
+</details>
 
 ### Installation
 1) Install miniconda </br>
