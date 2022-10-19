@@ -17,40 +17,42 @@ def dataloader(root_dir):
     
     OriginalImgs = sorted(glob.glob(os.path.join(root_dir, 'original/*.*')))
     LabeledImgs = sorted(glob.glob(os.path.join(root_dir, 'labeled/*.*'))) 
-    #Creating arrays for training and testing images
+    
+    # Creating arrays for training and testing images
     OriginalImg = []
     LabeledImg = []
     
-    #Reading training and testing images
+    # Reading training and testing original images
     for file in OriginalImgs:
         readOriginalImg = cv2.imread(file)
         
-        claheHE = clahe3(readOriginalImg)
+        # Applying clahe to the original images
+        claheHE = clahe(readOriginalImg)
         OriginalImg.append(np.asarray(claheHE)) 
         
         
-
-    
+    # Reading training and testing labeled images
     for file in LabeledImgs:
         readLabeledImg = cv2.imread(file)
         
+        # Applying the binarization function the the labeled images
         readLabeledImg = binarization(readLabeledImg, 125)
         LabeledImg.append(np.asarray(readLabeledImg))   
 
-    #Converting to float32
+    # Converting to float32
     arrayOriginalImg    = np.asarray(OriginalImg, dtype=np.float32)  
     arrayLabeledImg     = np.asarray(LabeledImg, dtype=np.float32)
-    
 
     #Normalizing the RGB codes by dividing it to the max RGB value.
     arrayOriginalImg =arrayOriginalImg / 255.0
 
-    
     return arrayOriginalImg, arrayLabeledImg
 
 
-
-def clahe3(rgb_img):
+# CLAHE (Contrastive Limited Adaptative Histogram Equalitzation)
+# We apply clahe in order to equalize the images from different
+# locations while at the same time increasing the image contrast
+def clahe(rgb_img):
     image_bw = cv2.cvtColor(rgb_img, cv2.COLOR_BGR2GRAY)
 
     clahe = cv2.createCLAHE(clipLimit = 0.01)
@@ -58,11 +60,10 @@ def clahe3(rgb_img):
     
     final_img = np.expand_dims(img, axis = -1)    
 
-    
     return final_img
 
 
-
+# Converting the labeledd images to binary
 def binarization(input_image, threshold):
     
     src = input_image[:,:, 0]
@@ -72,16 +73,6 @@ def binarization(input_image, threshold):
                 src[i][j] = 1
             else:
                 src[i][j] = 0
-    src = np.expand_dims(src, axis = -1) 
-        
+    src = np.expand_dims(src, axis = -1)       
     
     return src
-
-
-
-    
-
-
-
-
-
