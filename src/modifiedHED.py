@@ -16,13 +16,13 @@ from keras import regularizers
 from tensorflow import keras
 from tensorflow.keras import layers
 
-
+# The modified hed architecture is defined in this class
 class hed_model(): 
     def __init__(self, inputShape):
-        
         self.inputShape = inputShape
 
-        
+    # This function is used to convert the results from the side branches
+    # to the original image size
     def side_branch(self, x, factor):
         x = Conv2D(1, (1, 1), activation=None, padding='same')(x)
         kernel_size = (2*factor, 2*factor)
@@ -36,6 +36,7 @@ class hed_model():
 
         return x
 
+    # Defining a custom cross entropy balanced loss function
     def cross_entropy_balanced(self, y_true, y_pred):  
         
         _epsilon = self._to_tensor(K.epsilon(), y_pred.dtype.base_dtype)
@@ -55,7 +56,7 @@ class hed_model():
 
         return tf.where(condition=tf.equal(loss, 0.0), x=0.0, y=loss)  
 
-
+    # Converting the fuse output image to the original image size
     def fuse_pixel_error(self, y_true, y_pred):
         
         pred = tf.cast(tf.greater(y_pred, 0.5), tf.int32, name='prediction')
@@ -63,9 +64,9 @@ class hed_model():
         return tf.reduce_mean(error, name='pixel_error')
     
    
-
+    # Defining the model architecture
     def model(self):
-        # input                 
+        # Input                 
         img_input = Input(shape=self.inputShape, name='input')
         # Block 1
         x = Conv2D(64, (3, 3), activation='relu', dilation_rate=1, kernel_regularizer=regularizers.l2(0.0001), padding='same', name='block1_conv1')(img_input)   
@@ -99,12 +100,12 @@ class hed_model():
         x = Conv2D(512, (3, 3), activation='relu', dilation_rate=4, kernel_regularizer=regularizers.l2(0.0001), padding='same', name='block5_conv3')(x) # 30 30 512
         b5= self.side_branch(x, 16) 
 
-        #fuse
+        # Fuse
         fusion = Concatenate(axis=-1)([b1, b2, b3, b4, b5])
         fusion = Conv2D(1, (1,1), padding='same', use_bias=False, activation=None)(fusion) 
 
 
-        # outputs
+        # Outputs
         o_s1 = Activation(activation='sigmoid', name='o_s1')(b1)
         o_s2 = Activation(activation='sigmoid', name='o_s2')(b2)
         o_s3 = Activation(activation='sigmoid', name='o_s3')(b3)
@@ -112,11 +113,10 @@ class hed_model():
         o_s5 = Activation(activation='sigmoid', name='o_s5')(b5)
         o_fuse = Activation(activation='sigmoid', name='o_fuse')(fusion)
         
-        
+        # Defining the model
         model = Model(inputs=[img_input], outputs=[o_s1, o_s2, o_s3, o_s4, o_s5, o_fuse])
-        #model.summary()
-
         
+        # Compiling the model
         model.compile(loss={'o_s1': self.cross_entropy_balanced,
                     'o_s2': self.cross_entropy_balanced,
                     'o_s3': self.cross_entropy_balanced,
@@ -127,6 +127,6 @@ class hed_model():
               metrics={'o_fuse': self.fuse_pixel_error},
               optimizer=keras.optimizers.Adam(learning_rate=0.0001))
         
+        # Returning the model
         return model 
-
 
